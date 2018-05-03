@@ -39,4 +39,4 @@ map.print_map()
 
 print('Healt', map.hero.get_health())
 print('Mana', map.hero.get_mana())
-map.hero_atack(by='spell')
+
