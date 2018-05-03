@@ -1,5 +1,7 @@
 from hero import Hero
 from enemy import Enemy
+from weapon import Weapon
+from spell import Spell
 
 
 class Fight:
@@ -7,14 +9,12 @@ class Fight:
         self.hero = hero
         self.enemy = enemy
 
-    def __str__(self):
-        return 'Hero(health{}, mana{}) and Enemy({}, {}, {})'.format(hero.health, hero.mana, enemy.health, enemy.mana, enemy.damage)
-
-    def hero_atack(self, by=''):
-        print('A fight is started between our Hero(health{}, mana{}) and Enemy({}, {}, {})'.format(hero.health, hero.mana, enemy.health, enemy.mana, enemy.damage))
-        if by == 'spell':
-            while hero.is_alive or enemy.is_alive:
-                hero_damage = hero.atack('spell')
-                enemy.take_damage(hero_damage)
-                print('Hero cast {spell.name}, hits enemy for {hero_damage}. Enemy health is {enemy.get_health}'.format(spell.name, hero_damage, enemy.get_health))
-                
+    def start_fight(self):
+        while self.hero.is_alive() and self.enemy.is_alive():
+            self.enemy.take_damage(self.hero.bigger_damage())
+            self.hero.take_damage(self.enemy.attack())
+        if self.hero.is_alive():
+            print("Enemy is dead")
+        else:
+            print("Hero is dead")
+        return self.hero.is_alive()
