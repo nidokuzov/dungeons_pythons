@@ -15,7 +15,10 @@ class Enemy:
         return True
 
     def get_health(self):
-        return self.health
+        if self.health < 0:
+            return 0
+        else:
+            return self.health
 
     def get_mana(self):
         return self.mana
