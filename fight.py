@@ -11,7 +11,7 @@ class Fight:
         self.enemy = enemy
 
     def start_fight(self):
-        print('The fight between our hero and the enemy has juns began and....')
+        print('The fight between our hero and the enemy has juns begun and....')
         while self.hero.is_alive() and self.enemy.is_alive():
             self.enemy.take_damage(self.hero.bigger_damage())
             print('Our enemy health is {}'.format(self.enemy.get_health()))
